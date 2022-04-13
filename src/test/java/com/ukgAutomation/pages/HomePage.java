@@ -8,7 +8,8 @@ public class HomePage extends BasePage{
     public WebElement closeAlert;
 
 
-    @FindBy(xpath="//span[.='Disagree and close']")
+    @FindBy(id ="didomi-notice-disagree-button")
+    //@FindBy(xpath="//button[@id='didomi-notice-disagree-button']")
     public WebElement popUpDisagreeAndClose;
 
     @FindBy(xpath="//span[.='Solutions']")

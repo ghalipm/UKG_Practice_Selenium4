@@ -1,6 +1,7 @@
 package com.ukgAutomation.pages;
 
 import com.github.javafaker.Faker;
+import com.ukgAutomation.utilities.BrowserUtils;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -113,7 +114,8 @@ public class ContactSalesFormPage extends BasePage{
 
         totalEmployeesField.clear();
         totalEmployeesField.sendKeys(faker.number().digit());
-        selectTimeFrame.selectByIndex(random.nextInt(selectTimeFrame.getOptions().size()));
+        int timeIndex=1+random.nextInt(selectTimeFrame.getOptions().size()-1);
+        selectTimeFrame.selectByIndex(timeIndex);
         commenting();
 
 
@@ -179,9 +181,7 @@ public class ContactSalesFormPage extends BasePage{
             cityField.sendKeys(faker.address().city());
             zipCodeField.sendKeys(faker.address().zipCode());
 
-        } else {
-            //do nothing, just continue;
-        }
+        }  //do nothing, just continue;
 
 
         //submit the form

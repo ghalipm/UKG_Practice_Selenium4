@@ -1,8 +1,9 @@
 @smoke
 Feature: Users verifying several modules
+  Background:
+    Given user is on homepage
 @wp1
   Scenario: users accessing the Product Suites sub title under Solution module
-    Given user is on homepage
     When the user clicks on the Solution module
     Then the user should see the Product Suites sub title:
       | UKG Pro                 |
@@ -13,7 +14,6 @@ Feature: Users verifying several modules
 
   @wp2
   Scenario: users accessing by solutions sub title under Solution module
-    Given user is on homepage
     When the user clicks on the Solution module
     And the user should see By Solutions title and sub modules:
       | By Solution                 |
@@ -25,13 +25,11 @@ Feature: Users verifying several modules
       | Solutions For Your Industry |
   @wp3
   Scenario: accessing whyUKG modulus
-    Given user is on homepage
     When the user clicks on the whyUKG module
     Then the user should see the "Why UKG?" header
 
   @wp4
   Scenario: accessing customers modulus
-    Given user is on homepage
     When the user clicks on the Customers modulus
     Then the user should see the customers list:
       | Customers               |
@@ -41,7 +39,6 @@ Feature: Users verifying several modules
   # mark a block and ctrl+/, that comments out that block
   @wp5
   Scenario: accessing partners modulus
-    Given user is on homepage
     When the user clicks on the Partners modulus
     Then the user should see the partner's list:
       | UKG Marketplace           |
@@ -52,12 +49,10 @@ Feature: Users verifying several modules
 
   @wp6
   Scenario: accessing about us modulus
-    Given user is on homepage
     When the user clicks on the about us modulus
     Then the user should see the text About UKG
   @wp7
   Scenario: accessing contact modulus
-    Given user is on homepage
     When the user clicks on the contact modulus
     Then the user should see the Contact UKG header
 
@@ -66,8 +61,7 @@ Feature: Users verifying several modules
     # filling contact sales form
     # fill the forms under contact using Java Fakers!!!
   @wp8
-  Scenario: users should be able fill contact sales form
-    Given user is on homepage
+  Scenario: users should be able to fill contact sales form
     When the user clicks on the contact modulus
     Then the user should see the Contact Sales form
     Then user can fill the form with valid info and be able to send by clicking LEARN MORE button
@@ -75,23 +69,19 @@ Feature: Users verifying several modules
 
   @wp9
   Scenario: accessing support modulus
-    Given user is on homepage
     When the user clicks on the support modulus
     Then the user should see the UKG Support header
   @wp10
-  Scenario: accessing blog modulus
-    Given user is on homepage
+  Scenario: accessing blog module
     When the user clicks on the Blog modulus
     Then the user should see the UKG Blog header
   @wp11
   Scenario: accessing career modulus
-    Given user is on homepage
     When the user clicks on the career modulus
     Then the user should see the  Search Jobs  header
 
   @wp12
   Scenario: accessing glob-Icon modulus
-    Given user is on homepage
     When the user clicks on the globe modulus
     Then the user should see the languages  list:
       | English    |

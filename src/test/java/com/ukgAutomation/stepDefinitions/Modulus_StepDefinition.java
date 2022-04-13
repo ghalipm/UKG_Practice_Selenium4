@@ -91,7 +91,8 @@ public class Modulus_StepDefinition {
     @When("the user clicks on the whyUKG module")
     public void the_user_clicks_on_the_why_ukg_module() {
         // Write code here that turns the phrase above into concrete actions
-        homePage.whyUKGTab.click();
+        BrowserUtils.waitForClickability(homePage.whyUKGTab,5);
+        homePage.whyUKGTab.sendKeys(Keys.ENTER);
 
     }
 
@@ -180,7 +181,7 @@ public class Modulus_StepDefinition {
     @When("the user clicks on the contact modulus")
     public void the_user_clicks_on_the_contact_modulus() {
         // Write code here that turns the phrase above into concrete actions
-        homePage.contactTab.click();
+        homePage.contactTab.sendKeys(Keys.ENTER);
     }
 
     @Then("the user should see the Contact UKG header")
@@ -215,11 +216,11 @@ public class Modulus_StepDefinition {
 
     @Then("the user should see the UKG Blog header")
     public void the_user_should_see_the_ukg_blog_header() {
-        String expectedBlog=" UKG Blogs ";
+        String expectedBlog="UKG Blogs";
         System.out.println("expectedBlog = " + expectedBlog);
         System.out.println("homePage.blogHeader.getText() = " + homePage.blogHeader.getText());
 
-        Assert.assertEquals("UK Blogs got difference!",expectedBlog.trim(), homePage.blogHeader.getText().trim());
+        Assert.assertTrue("UK Blogs got difference!", homePage.blogHeader.getText().contains(expectedBlog));
     }
 
 
@@ -274,6 +275,7 @@ public class Modulus_StepDefinition {
     @Then("the user should see the Contact Sales form")
     public void the_user_should_see_the_contact_sales_form() {
         homePage.contactTab.sendKeys(Keys.ENTER);
+        //homePage.popUpDisagreeAndClose.sendKeys(Keys.ENTER);
         BrowserUtils.waitForClickability(contactSalesFormPage.contactSalesLearnMoreButtonFirst,3);
         contactSalesFormPage.contactSalesLearnMoreButtonFirst.sendKeys(Keys.ENTER);
         BrowserUtils.waitForClickability(contactSalesFormPage.contactSalesLearnMoreButtonSecond,3);
@@ -295,7 +297,7 @@ public class Modulus_StepDefinition {
 
     @Then("verify that user be able to see {string} message")
     public void verify_that_user_be_able_to_see_that_url_contains_message(String string) {
-
+        BrowserUtils.waitForVisibility(contactSalesFormPage.thankYouHeader, 5);
         Assert.assertTrue(contactSalesFormPage.thankYouHeader.isDisplayed());
 
     }

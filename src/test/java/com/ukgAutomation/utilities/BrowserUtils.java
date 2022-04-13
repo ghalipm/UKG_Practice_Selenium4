@@ -61,20 +61,20 @@ public class BrowserUtils {
         }
         return elemTexts;
     }
-    public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
-        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeToWaitInSec);
-        return wait.until(ExpectedConditions.visibilityOf(element));
+    public static void waitForVisibility(WebElement element, int timeToWaitInSec) {
+        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), Duration.ofSeconds(timeToWaitInSec));
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
     public static WebElement waitForVisibility(By locator, int timeout) {
-        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-    public static WebElement waitForClickability(WebElement element, int timeout) {
-        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeout);
-        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    public static void waitForClickability(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
     public static WebElement waitForClickability(By locator, int timeout) {
-        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeout);
+        WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
     public static void waitForPageToLoad(long timeOutInSeconds) {
@@ -85,7 +85,7 @@ public class BrowserUtils {
         };
         try {
             System.out.println("Waiting for page to load...");
-            WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), timeOutInSeconds);
+            WebDriverWait wait = new WebDriverWait(com.ukgAutomation.utilities.Driver.getDriver(), Duration.ofSeconds(timeOutInSeconds));
             wait.until(expectation);
         } catch (Throwable error) {
             System.out.println(
@@ -188,7 +188,7 @@ public class BrowserUtils {
      *
      * @param element
      */
-    public void clickWithJS(WebElement element) {
+    public static void clickWithJS(WebElement element) {
         ((JavascriptExecutor) com.ukgAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) com.ukgAutomation.utilities.Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
